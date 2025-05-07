@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Agendamentos</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script>
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      fetch('http://localhost:3000/admin', { credentials: 'include' })
+        .then(res => res.json())
+        .then(data => {
+          const servicos = {};
+          data.forEach(a => {
+            servicos[a.service] = (servicos[a.service] || 0) + 1;
+          });
+
+          const chartData = [['Serviço', 'Quantidade']];
+          for (const servico in servicos) {
+            chartData.push([servico, servicos[servico]]);
+          }
+
+          const dataTable = google.visualization.arrayToDataTable(chartData);
+          const options = {
+            title: 'Serviços Mais Agendados',
+            pieHole: 0.4,
+            width: 600,
+            height: 400
+          };
+
+          const chart = new google.visualization.PieChart(document.getElementById('grafico'));
+          chart.draw(dataTable, options);
+        });
+    }
+  </script>
+</head>
+<body>
+  <h2 style="text-align:center">Análise de Agendamentos</h2>
+  <div id="grafico" style="margin:auto"></div>
+</body>
+</html>

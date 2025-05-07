@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Área Administrativa - Nail Designer Sandrinha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header>
+    <h1>Agendamentos - Nail Designer Sandrinha</h1>
+    <button id="logoutBtn">Sair</button>
+  </header>
+
+  <main>
+    <section class="tabela-container">
+      <h2>Lista de Agendamentos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Serviço</th>
+            <th>Data</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody id="agendamentosBody">
+          <!-- dados vão ser inseridos via JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    async function carregarAgendamentos() {
+      const res = await fetch('http://localhost:3000/admin', {
+        credentials: 'include'
+      });
+      if (res.status === 401) {
+        alert('Você não está logado.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const agendamentos = await res.json();
+      const tbody = document.getElementById('agendamentosBody');
+
+      agendamentos.forEach(a => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${a.name}</td>
+          <td>${a.email}</td>
+          <td>${a.service}</td>
+          <td>${a.date}</td>
+          <td>${a.time}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      // opcional: criar rota /logout no back
+      alert('Função sair ainda não implementada.');
+    });
+
+    carregarAgendamentos();
+
+    async function carregarAgendamentos() {
+  const agendamentos = [
+    { name: 'Maria', email: 'maria@gmail.com', service: 'Pedicure', date: '04/04/2025', time: '08:00' },
+    { name: 'Lurdes', email: 'lurdes@gmail.com', service: 'Unhas em gel', date: '04/04/2025', time: '13:00' },
+    { name: 'Nardes', email: 'nardes@gmail.com', service: 'Pedicure', date: '04/04/2025', time: '14:00' },
+    { name: 'Lais', email: 'lais@gmail.com', service: 'Manicure', date: '05/04/2025', time: '08:00'},
+    { name: 'Andreia', email: 'andreia@gmail.com', service: 'Manicure', date: '05/04/2025', time: '09:30' },
+    { name: 'Maria da Cruz', email: 'maria_cruz@gmail.com', service: 'Pedicure', date: '06/04/2025', time: '08:30' },
+    { name: 'Nici', email: 'nici@gmail.com', service: 'Unhas em gel', date: '06/04/2025', time: '13:00' },
+    { name: 'Cleo', email: 'cleo@gmail.com', service: 'Manicure', date: '07/04/2025', time: '13:00' },
+    { name: 'Simone', email: 'simone@gmail.com', service: 'Pedicure', date: '07/04/2025', time: '14:30' },
+    { name: 'Milene', email: 'milene@gmail.com', service: 'Pedicure', date: '08/03/2025', time: '07:30' },
+    { name: 'Lidiane', email: 'lidiane@gmail.com', service: 'Manicure', date: '08/03/2025', time: '13:00' },
+    { name: 'Maria Escola', email: 'maria.escola@gmail.com', service: 'Pedicure', date: '11/04/2025', time: '15:30' },
+    { name: 'Janice', email: 'janice@gmail.com', service: 'Pedicure', date: '11/04/2025', time: '17:00' },
+    { name: 'Juliana', email: 'juliana@gmail.com', service: 'Unhas em gel', date: '12/04/2025', time: '08:00' },
+    { name: 'Andreia', email: 'andreia@gmail.com', service: 'Pedicure', date: '12/04/2025', time: '10:30' },
+    { name: 'Gislaine', email: 'gislaine@gmail.com', service: 'Manicure', date: '12/04/2025', time: '13:00' },
+    { name: 'Marcelinho', email: 'marcelinho@gmail.com', service: 'Pedicure', date: '13/04/2025', time: '08:30' },
+    { name: 'Mareir', email: 'mareir@gmail.com', service: 'Manicure', date: '13/04/2025', time: '13:00' },
+    { name: 'Luciene', email: 'luciene@gmail.com', service: 'Unhas em gel', date: '14/04/2025', time: '16:10' },
+    { name: 'Fatima', email: 'fatima@gomail.com', service: 'Pedicure', date: '15/04/2025', time: '13:00' },
+    { name: 'Pati', email: 'pati@gmail.com', service: 'Pedicure', date: '18/04/2025', time: '15:00' },
+    { name: 'Neuza', email: 'neuza@gmail.com', service: 'Pedicure', date: '19/04/2025', time: '13:00' },
+    { name: 'Nazinha', email: 'nazinha@gmail.com', service: 'Pedicure', date: '20/04/2025', time: '13:00' },
+    { name: 'João', email: 'joao@gmail.com', service: 'Pedicure', date: '20/04/2025', time: '14:00' },
+    { name: 'Cida', email: 'cida@gmail.com', service: 'Unhas em gel', date: '20/04/2025', time: '15:30' },
+    { name: 'Simone', email: 'simone@gmail.com', service: 'Manicure', date: '21/04/2025', time: '07:30' },
+    { name: 'Leonice', email: 'leonice@gmail.com', service: 'Pedicure', date: '21/04/2025', time: '10:00' },
+    { name: 'Andressa', email: 'andressa@gmail.com', service: 'Pedicure', date: '21/04/2025', time: '13:00' },
+  ];
+
+  const tbody = document.getElementById('agendamentosBody');
+  agendamentos.forEach(a => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${a.name}</td>
+      <td>${a.email}</td>
+      <td>${a.service}</td>
+      <td>${a.date}</td>
+      <td>${a.time}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+    
+  </script>
+</body>
+</html>
+
+

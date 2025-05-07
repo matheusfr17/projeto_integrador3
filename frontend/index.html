@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nail Designer Sandrinha</title>
+
+  <!-- MANTIDO: link para o CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- MANTIDO: seção principal de cabeçalho -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <!-- MANTIDO: barra de navegação -->
+      <div class="navbar">
+        <nav>
+          <ul class="menu">
+            <!-- MANTIDO: navegação entre seções -->
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#agendar">Agendamento</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <!-- NOVO: link de login -->
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- MANTIDO: texto de chamada no cabeçalho -->
+      <div class="hero-text">
+        <h1>Realce sua beleza com um toque de elegância</h1>
+        <p>Agende seu horário com quem entende de cuidado e estilo</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- MANTIDO: seção "Sobre Mim" -->
+    <section id="sobre" class="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Sou Alecsandra, profissional apaixonada pelo universo da beleza e especialista em unhas. Com dedicação e carinho, transformo o cuidado com suas mãos e pés em uma experiência relaxante e especial. Aqui cada cliente é única e cada detalhe importa!</p>
+    </section>
+
+    <!-- MANTIDO: seção de serviços -->
+    <section id="servicos" class="servicos">
+      <h2>Serviços e Preços</h2>
+      <div class="card">Manicure – R$ 30,00</div>
+      <div class="card">Pedicure – R$ 35,00</div>
+      <div class="card">Unhas de Gel – R$ 70,00</div>
+      <div class="card">Design de Unhas – R$ 50,00</div>
+    </section>
+
+    <!-- MANTIDO: galeria de fotos -->
+    <section id="galeria" class="galeria">
+      <h2>Galeria de Fotos</h2>
+      <div class="galeria-container">
+        <!-- MANTIDO: imagens ilustrativas -->
+        <img src="mao1.jpg" alt="Unhas decoradas 1">
+        <img src="mao2.jpg" alt="Unhas decoradas 2">
+        <img src="mao3.jpg" alt="Unhas decoradas 3">
+        <img src="mao4.jpg" alt="Unhas decoradas 4">
+      </div>
+    </section>
+
+    <!-- MANTIDO: formulário de agendamento -->
+    <section id="agendar" class="agendamento">
+      <h2>Agende Seu Horário</h2>
+      <form id="formAgendamento">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <select id="servico">
+          <option value="Manicure">Manicure</option>
+          <option value="Pedicure">Pedicure</option>
+          <option value="Unhas de Gel">Unhas de Gel</option>
+        </select>
+        <input type="date" id="data" required>
+        <input type="time" id="hora" required>
+        <button type="submit">Agendar</button>
+      </form>
+      <div id="mensagem"></div>
+    </section>
+
+    <!-- MODIFICADO: seção de contato agora inclui funcionamento, whatsapp e instagram -->
+    <section id="contato" class="contato">
+      <h2>Contato e Localização</h2>
+      <!-- ADICIONADO: horário de funcionamento e chamada para contato -->
+      <p><strong>Funcionamento:</strong> Segunda a Sábado, das 9h às 18h</p>
+      <p>Entre em contato conosco via WhatsApp ou nos siga no Instagram!</p>
+
+      <!-- MANTIDO: mapa do Google Maps da cidade -->
+      <iframe src="https://www.google.com/maps?q=Alum%C3%ADnio,+SP&output=embed" width="100%" height="300" style="border:0;"></iframe>
+    </section>
+  </main>
+
+  <!-- MODIFICADO: rodapé atualizado com ícones sociais -->
+  <footer>
+    <!-- MANTIDO: direitos autorais, porém com melhorias -->
+    <p>© 2025 Nail Designer Sandrinha - Todos os direitos reservados</p>
+
+    <!-- ADICIONADO: ícones do WhatsApp e Instagram com links -->
+    <div class="social-icons">
+      <a href="https://wa.me/SEUNUMEROAQUI" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/SEUUSUARIO" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- MANTIDO: script para alternar menu (útil em versões responsivas) -->
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
